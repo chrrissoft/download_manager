@@ -1,0 +1,16 @@
+package com.chrrissoft.downloadmanager.usecases.di
+
+import com.chrrissoft.downloadmanager.usecases.classes.GetDownloadRequestsUseCaseImpl
+import com.chrrissoft.downloadmanager.usecases.interfaces.GetDownloadRequestsUseCase
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+
+
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class GetDownloadRequestsUseCaseModule {
+    @Binds
+    abstract fun binds(impl: GetDownloadRequestsUseCaseImpl) : GetDownloadRequestsUseCase
+}

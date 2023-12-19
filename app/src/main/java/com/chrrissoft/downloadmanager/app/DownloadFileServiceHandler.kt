@@ -23,6 +23,7 @@ import com.chrrissoft.downloadmanager.usecases.interfaces.EnqueueDownloadUseCase
 import com.chrrissoft.downloadmanager.utils.BundleUtils.Bundle
 import com.chrrissoft.downloadmanager.utils.MessengerUtils.Message
 import com.chrrissoft.downloadmanager.utils.Util.debug
+import com.chrrissoft.localstorage.app.Uris
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -55,7 +56,9 @@ class DownloadFileServiceHandler @Inject constructor(
 
     private fun enqueueDownload(msg: Message, clients: MutableMap<Int, Messenger>) {
         scope.launch {
+            msg.data.classLoader = Uris::class.java.classLoader
             debug(msg.data)
+            debug(msg.data.getParcelable("key"))
 //            debug(msg.obj as? Uris)
 //            val requests = msg.data.links.map { DownloadRequest(url = it.toString()) }
 //            debug("requests $requests")

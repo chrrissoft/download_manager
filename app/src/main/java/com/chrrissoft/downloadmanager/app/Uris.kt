@@ -1,4 +1,4 @@
-package com.chrrissoft.downloadmanager.app
+package com.chrrissoft.localstorage.app
 
 import android.os.Parcel
 import android.os.Parcelable

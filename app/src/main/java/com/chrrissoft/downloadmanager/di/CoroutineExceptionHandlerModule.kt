@@ -14,5 +14,7 @@ import javax.inject.Singleton
 object CoroutineExceptionHandlerModule {
     @Provides
     @Singleton
-    fun provide(): CoroutineExceptionHandler = CoroutineExceptionHandler { _, _ -> }
+    fun provide(): CoroutineExceptionHandler = CoroutineExceptionHandler { _, e ->
+        e.printStackTrace()
+    }
 }

@@ -21,10 +21,7 @@ object FlowUtils {
         return ResFlow {
             val res = mutableMapOf<DownloadRequest, Result<*>>()
             block(res)
-            if (res.isNotEmpty())
-                if (res.all { it.value is Success }) emit(ResState.Success(res))
-                else emit(ResState.Error(Throwable("None request was successfully on operation")))
-            else emit(ResState.Error(Throwable("Empty data receiver")))
+            emit(ResState.Success(res))
         }
     }
 

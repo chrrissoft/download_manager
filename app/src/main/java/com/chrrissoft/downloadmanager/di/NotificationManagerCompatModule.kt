@@ -1,6 +1,7 @@
 package com.chrrissoft.downloadmanager.di
 
-import android.os.Looper
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.app.NotificationManagerCompat.from
 import com.chrrissoft.downloadmanager.DownloadManagerApp
 import dagger.Module
 import dagger.Provides
@@ -9,7 +10,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppLooperModule {
+object NotificationManagerCompatModule {
     @Provides
-    fun provide(app: DownloadManagerApp): Looper = app.mainLooper
+    fun provide(app: DownloadManagerApp) : NotificationManagerCompat = from(app)
 }

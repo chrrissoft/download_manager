@@ -1,5 +1,6 @@
 package com.chrrissoft.downloadmanager.entities
 
+import android.net.Uri
 import com.chrrissoft.downloadmanager.Values
 import kotlin.random.Random
 
@@ -16,4 +17,6 @@ data class DownloadRequest(
     val requiresDeviceIdle: Boolean = false,
     val url: String = "",
     val name: String = Random.nextInt().toString(),
-)
+) {
+    constructor(uri: Uri) : this(url = uri.toString())
+}

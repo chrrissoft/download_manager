@@ -1,12 +1,21 @@
 package com.chrrissoft.downloadmanager.entities
 
+import com.chrrissoft.downloadmanager.serializers.ThrowableSerializer
 import com.chrrissoft.downloadmanager.ui.entities.SnackbarData.MessageType
 import com.chrrissoft.downloadmanager.utils.Util.debug
+import kotlinx.serialization.Contextual
+import kotlinx.serialization.Serializable
 
+@Serializable
 sealed interface ResState<out R> {
+    @Serializable
     object Loading : ResState<Nothing>
+
+    @Serializable
     data class Success<R>(val data: R) : ResState<R>
-    data class Error(val throwable: Throwable?) : ResState<Nothing> {
+
+    @Serializable
+    data class Error(@Contextual @Serializable(ThrowableSerializer::class) val throwable: Throwable?) : ResState<Nothing> {
         init {
             debug(throwable)
         }
